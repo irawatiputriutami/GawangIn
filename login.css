@@ -1,0 +1,81 @@
+/* Reset dasar untuk margin dan padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Gaya umum untuk body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fef2f2; /* Warna latar belakang yang lembut */
+    color: #333; /* Warna teks yang lebih gelap untuk kontras */
+}
+
+/* Halaman login */
+#login-page {
+    width: 100%;
+    max-width: 400px; /* Lebar maksimal form login */
+    padding: 2rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 10%;
+}
+
+#login-page h1 {
+    font-size: 2rem;
+    color: #f44336; /* Warna merah untuk judul */
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #f44336; /* Warna border merah saat focus */
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 1rem;
+    background-color: #f44336; /* Warna merah */
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #d32f2f; /* Warna merah lebih gelap saat hover */
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+    #login-page {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    #login-page h1 {
+        font-size: 1.5rem;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    button {
+        font-size: 1rem;
+    }
+}

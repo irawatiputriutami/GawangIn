@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beranda - GawangIn</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+  <style>
+    /* Gaya untuk header */
+    header {
+      background-color: #ef4444;
+      padding: 30px 0;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 4rem;
+      font-weight: bold;
+      color: white;
+      margin: 0;
+    }
+    /* Gaya untuk slider gambar */
+    #slider-container {
+      position: relative;
+      width: 100%;
+      height: 600px;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+    .slider-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .slider-image.active {
+      opacity: 1;
+    }
+    /* Footer: Teks putih */
+    footer p {
+      color: white;
+    }
+  </style>
+</head>
+<body class="bg-red-100">
+  <!-- Header -->
+  <header>
+    <h1>GawangIn</h1>
+  </header>
+
+  <!-- Slider Gambar Lapangan -->
+  <div id="slider-container">
+    <img src="assets/lapangan1.jpeg" alt="Lapangan 1" class="slider-image active" />
+    <img src="assets/lapangan2.jpeg" alt="Lapangan 2" class="slider-image" />
+    <img src="assets/lapangan3.jpeg" alt="Lapangan 3" class="slider-image" />
+    <img src="assets/lapangan4.jpeg" alt="Lapangan 4" class="slider-image" />
+    <img src="assets/lapangan5.jpeg" alt="Lapangan 5" class="slider-image" />
+  </div>
+
+  <script>
+    const images = document.querySelectorAll('.slider-image');
+    let currentIndex = 0;
+    setInterval(() => {
+      images[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + 1) % images.length;
+      images[currentIndex].classList.add('active');
+    }, 3000);
+  </script>
+
+  <!-- Icons Section -->
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 px-6 text-center">
+    <!-- Google Maps icon mengarah ke bagian Google Maps (id="gmaps") -->
+    <a href="#gmaps" class="block p-4 bg-white shadow-lg rounded-lg transition-transform hover:scale-105">
+      <i class="fas fa-map-marker-alt fa-3x text-red-500"></i>
+      <p class="mt-2 font-medium text-red-500">Google Maps</p>
+    </a>
+    <a href="pemesanan.html" class="block p-4 bg-white shadow-lg rounded-lg transition-transform hover:scale-105">
+      <i class="fas fa-calendar-check fa-3x text-red-500"></i>
+      <p class="mt-2 font-medium text-red-500">Pemesanan Lapangan</p>
+    </a>
+    <a href="#kenapa" class="block p-4 bg-white shadow-lg rounded-lg transition-transform hover:scale-105">
+      <i class="fas fa-info-circle fa-3x text-red-500"></i>
+      <p class="mt-2 font-medium text-red-500">Informasi</p>
+    </a>
+  </div>
+
+  <!-- Kenapa Memilih GawangIn Section -->
+  <div id="kenapa" class="mt-8 px-6 py-4 bg-white rounded-lg shadow-lg">
+    <h2 class="text-xl font-bold text-red-500 mb-4">Kenapa Memilih GawangIn?</h2>
+    <p>
+      GawangIn adalah platform web yang mempermudah pemesanan sewa lapangan futsal secara online, memberikan kemudahan dan keuntungan bagi pengguna. Dengan GawangIn, Anda bisa menemukan berbagai pilihan lapangan futsal yang lengkap berdasarkan lokasi, harga, dan fasilitas, semuanya dengan proses yang praktis tanpa perlu repot datang langsung. GawangIn juga menawarkan banyak manfaat, seperti diskon spesial dan cashback eksklusif, jaminan harga terbaik tanpa biaya tersembunyi, serta fleksibilitas untuk memilih waktu bermain sesuai kebutuhan. Didukung dengan layanan pelanggan 24/7, GawangIn memastikan pengalaman memesan lapangan futsal Anda cepat, nyaman, dan menguntungkan, sambil ikut mendukung komunitas futsal dan pemilik lapangan lokal.
+    </p>
+  </div>
+
+  <!-- Embedded Google Maps Section -->
+  <div id="gmaps" class="mt-8 px-6">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345093745!2d144.95373631584204!3d-37.816279742021516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577e32b5a4aa7b1!2sVictoria!5e0!3m2!1sen!2sau!4v1611223948361!5m2!1sen!2sau"
+      width="100%"
+      height="300"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+    ></iframe>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-red-500 text-white py-6 mt-8">
+    <div class="text-center">
+      <p class="font-medium">Lokasi: Jl. Raya Futsal No.123</p>
+      <p class="font-medium">Telepon: +62 812 3456 7890</p>
+      <p class="font-medium">WhatsApp: +62 812 3456 7890</p>
+      <p class="font-medium">Instagram: @GawangIn</p>
+    </div>
+  </footer>
+</body>
+</html>
