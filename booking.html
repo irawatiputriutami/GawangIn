@@ -1,36 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Booking Sukses - GawangIn</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="booking.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh; display: flex; flex-direction: column;
+      background: #fafafa;
+    }
+    .navbar {
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+    .nav-brand { font-size: 1.5rem; font-weight: 800; color: #dc2626; }
+    .success-container {
+      flex: 1; display: flex; align-items: center; justify-content: center; padding: 3rem 2rem;
+    }
+    .success-card {
+      background: white; border-radius: 24px; padding: 4rem 3rem; text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08); max-width: 500px; width: 100%;
+      animation: popIn 0.6s ease;
+    }
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.8); }
+      50% { transform: scale(1.02); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .success-icon {
+      width: 100px; height: 100px; border-radius: 50%;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 2rem; font-size: 3rem; color: white;
+      box-shadow: 0 10px 30px rgba(34,197,94,0.3);
+      animation: bounce 1s ease 0.3s;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .success-card h2 { font-size: 1.8rem; font-weight: 700; color: #1a1a1a; }
+    .success-card p { color: #666; margin-top: 0.5rem; font-size: 1rem; }
+    .back-btn {
+      display: inline-block; margin-top: 2rem;
+      background: linear-gradient(135deg, #dc2626, #b91c1c); color: white;
+      padding: 14px 36px; border-radius: 50px; font-weight: 600; text-decoration: none;
+      transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(220,38,38,0.3);
+    }
+    .back-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(220,38,38,0.4); }
+    .footer {
+      background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+      color: white; padding: 2rem; text-align: center;
+    }
+    .footer p { color: #aaa; font-size: 0.85rem; }
+  </style>
 </head>
-<body class="bg-red-100">
-  <!-- Header -->
-  <header class="bg-red-500 text-white py-8">
-    <div class="container mx-auto text-center">
-      <h1 class="text-4xl font-bold">Booking Sukses</h1>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="nav-brand">GawangIn</a>
+      <a href="pemesanan.html" class="text-gray-600 hover:text-red-600 transition font-medium">Katalog</a>
     </div>
-  </header>
-  
-  <!-- Content -->
-  <div class="container mx-auto px-4 py-16 flex flex-col items-center">
-    <i class="fas fa-check-circle text-green-500 fa-6x"></i>
-    <p class="mt-4 text-2xl text-gray-700">Booking sudah berhasil!</p>
-    <a href="pemesanan.html" class="mt-8 bg-red-500 text-white px-6 py-3 rounded hover:bg-red-600 transition">Kembali ke Katalog</a>
+  </nav>
+
+  <!-- Success -->
+  <div class="success-container">
+    <div class="success-card">
+      <div class="success-icon"><i class="fas fa-check"></i></div>
+      <h2>Booking Berhasil!</h2>
+      <p>Pesanan Anda telah dikonfirmasi. Selamat berolahraga!</p>
+      <a href="pemesanan.html" class="back-btn">
+        <i class="fas fa-arrow-left mr-2"></i> Kembali ke Katalog
+      </a>
+    </div>
   </div>
-  
+
   <!-- Footer -->
-  <footer class="bg-red-500 text-white py-6 mt-8">
-    <div class="container mx-auto text-center">
-      <p class="font-medium">Lokasi: Jl. Raya Futsal No.123</p>
-      <p class="font-medium">Telepon: +62 812 3456 7890</p>
-      <p class="font-medium">WhatsApp: +62 812 3456 7890</p>
-      <p class="font-medium">Instagram: @GawangIn</p>
-    </div>
+  <footer class="footer">
+    <p>&copy; 2025 GawangIn &mdash; Platform Sewa Lapangan Online</p>
   </footer>
 </body>
 </html>
