@@ -1,114 +1,212 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Katalog Lapangan - GawangIn</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="pemesanan.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: #fafafa; color: #333; }
+
+    /* Navbar */
+    .navbar {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+    .nav-brand { font-size: 1.5rem; font-weight: 800; color: #dc2626; }
+
+    /* Page Header */
+    .page-header {
+      background: linear-gradient(135deg, #dc2626, #991b1b);
+      padding: 4rem 2rem; text-align: center; color: white;
+      position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('assets/lapangan2.jpeg') center/cover; opacity: 0.15;
+    }
+    .page-header h1 { position: relative; font-size: 2.5rem; font-weight: 700; }
+    .page-header p { position: relative; color: rgba(255,255,255,0.8); margin-top: 0.5rem; }
+
+    /* Cards */
+    .katalog-grid {
+      display: grid; gap: 2rem; padding: 3rem 2rem;
+      max-width: 1200px; margin: 0 auto;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+    .card-link { text-decoration: none; color: inherit; }
+    .card {
+      background: white; border-radius: 20px; overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.06); transition: all 0.4s ease;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(220,38,38,0.12); }
+    .card img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.4s ease; }
+    .card:hover img { transform: scale(1.05); }
+    .card-img-wrapper { overflow: hidden; position: relative; }
+    .card-badge {
+      position: absolute; top: 12px; right: 12px;
+      background: #dc2626; color: white; padding: 4px 12px; border-radius: 20px;
+      font-size: 0.75rem; font-weight: 600;
+    }
+    .card-body { padding: 1.5rem; }
+    .card-title { font-size: 1.2rem; font-weight: 600; color: #1a1a1a; }
+    .card-text { color: #666; margin-top: 0.5rem; font-size: 0.9rem; }
+    .card-price {
+      color: #dc2626; font-weight: 700; font-size: 1.1rem; margin-top: 0.75rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.5rem; border-top: 1px solid #f3f4f6;
+    }
+    .book-btn {
+      background: linear-gradient(135deg, #dc2626, #b91c1c); color: white;
+      padding: 8px 20px; border-radius: 20px; font-weight: 500; font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+    .book-btn:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(220,38,38,0.3); }
+
+    /* FAB */
+    .fab-btn {
+      position: fixed; bottom: 2rem; right: 2rem;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+      color: white; display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; box-shadow: 0 8px 25px rgba(220,38,38,0.4);
+      transition: all 0.3s ease; text-decoration: none; z-index: 100;
+    }
+    .fab-btn:hover { transform: scale(1.1) rotate(90deg); }
+
+    /* Footer */
+    .footer {
+      background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+      color: white; padding: 3rem 2rem; text-align: center;
+    }
+    .footer p { color: #aaa; font-size: 0.9rem; margin: 0.2rem 0; }
+
+    /* Animation */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
 </head>
-<body class="bg-red-100">
-  <!-- Header -->
-  <header>
-    <h1>Katalog Lapangan</h1>
-  </header>
-  
-  <!-- Katalog Grid -->
-  <div class="container">
-    <div id="katalogGrid" class="grid">
-      <!-- Kartu lapangan default (hardcode) -->
-      <a href="booking.html" class="card-link">
-        <div class="card">
-          <img src="assets/lapangan1.jpeg" alt="Lapangan 1">
-          <div class="card-body">
-            <h2 class="card-title">Lapangan 1</h2>
-            <p class="card-text">Deskripsi singkat lapangan 1.</p>
-            <p class="card-price">Rp 500.000 / jam</p>
-          </div>
-        </div>
-      </a>
-      <a href="booking.html" class="card-link">
-        <div class="card">
-          <img src="assets/lapangan2.jpeg" alt="Lapangan 2">
-          <div class="card-body">
-            <h2 class="card-title">Lapangan 2</h2>
-            <p class="card-text">Deskripsi singkat lapangan 2.</p>
-            <p class="card-price">Rp 600.000 / jam</p>
-          </div>
-        </div>
-      </a>
-      <a href="booking.html" class="card-link">
-        <div class="card">
-          <img src="assets/lapangan3.jpeg" alt="Lapangan 3">
-          <div class="card-body">
-            <h2 class="card-title">Lapangan 3</h2>
-            <p class="card-text">Deskripsi singkat lapangan 3.</p>
-            <p class="card-price">Rp 550.000 / jam</p>
-          </div>
-        </div>
-      </a>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="nav-brand">GawangIn</a>
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="text-gray-600 hover:text-red-600 transition font-medium">Beranda</a>
+        <a href="login.html" class="text-gray-600 hover:text-red-600 transition font-medium">Admin</a>
+      </div>
     </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1><i class="fas fa-th-large mr-3"></i>Katalog Lapangan</h1>
+    <p>Pilih lapangan terbaik untuk olahraga favoritmu</p>
+  </header>
+
+  <!-- Katalog Grid -->
+  <div class="katalog-grid" id="katalogGrid">
+    <a href="booking.html" class="card-link fade-in">
+      <div class="card">
+        <div class="card-img-wrapper">
+          <img src="assets/lapangan1.jpeg" alt="Lapangan Basket" />
+          <span class="card-badge">Populer</span>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Lapangan Basket</h2>
+          <p class="card-text">Indoor court dengan lantai kayu premium, ring standar NBA</p>
+          <p class="card-price"><i class="fas fa-tag"></i> Rp 500.000 / jam</p>
+        </div>
+        <div class="card-footer">
+          <span class="text-sm text-gray-400"><i class="fas fa-star text-yellow-400"></i> 4.9 (120 review)</span>
+          <span class="book-btn">Booking</span>
+        </div>
+      </div>
+    </a>
+    <a href="booking.html" class="card-link fade-in">
+      <div class="card">
+        <div class="card-img-wrapper">
+          <img src="assets/lapangan2.jpeg" alt="Lapangan Bola" />
+          <span class="card-badge">Promo</span>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Lapangan Sepak Bola</h2>
+          <p class="card-text">Rumput sintetis kualitas FIFA, ukuran standar futsal</p>
+          <p class="card-price"><i class="fas fa-tag"></i> Rp 600.000 / jam</p>
+        </div>
+        <div class="card-footer">
+          <span class="text-sm text-gray-400"><i class="fas fa-star text-yellow-400"></i> 4.8 (95 review)</span>
+          <span class="book-btn">Booking</span>
+        </div>
+      </div>
+    </a>
+    <a href="booking.html" class="card-link fade-in">
+      <div class="card">
+        <div class="card-img-wrapper">
+          <img src="assets/lapangan3.jpeg" alt="Lapangan Tenis" />
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Lapangan Tenis</h2>
+          <p class="card-text">Hard court standar internasional, net Wimbledon original</p>
+          <p class="card-price"><i class="fas fa-tag"></i> Rp 550.000 / jam</p>
+        </div>
+        <div class="card-footer">
+          <span class="text-sm text-gray-400"><i class="fas fa-star text-yellow-400"></i> 4.7 (78 review)</span>
+          <span class="book-btn">Booking</span>
+        </div>
+      </div>
+    </a>
   </div>
-  
-  <!-- Tombol Plus untuk Menambah Katalog -->
-  <a href="tambahsewalapangan.html" class="fixed-plus">
-    <i class="fas fa-plus fa-2x"></i>
+
+  <!-- FAB -->
+  <a href="tambahsewalapangan.html" class="fab-btn" title="Tambah Lapangan">
+    <i class="fas fa-plus"></i>
   </a>
-  
-  <!-- Script: Memuat data katalog baru dari localStorage -->
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p><strong style="color:white;">GawangIn</strong> &mdash; Platform Sewa Lapangan Online</p>
+    <p>Jl. Raya Futsal No.123 | +62 812 3456 7890 | @GawangIn</p>
+  </footer>
+
   <script>
+    // Load dynamic catalog from localStorage
     document.addEventListener("DOMContentLoaded", function() {
       let katalog = JSON.parse(localStorage.getItem('katalogLapangan')) || [];
-      const katalogGrid = document.getElementById('katalogGrid');
-      
+      const grid = document.getElementById('katalogGrid');
       katalog.forEach(function(item) {
-        const cardLink = document.createElement('a');
-        cardLink.href = "booking.html";
-        cardLink.className = "card-link";
-        
-        const cardDiv = document.createElement('div');
-        cardDiv.className = "card";
-        
-        const img = document.createElement('img');
-        img.src = item.gambar;
-        img.alt = item.nama;
-        
-        const cardBody = document.createElement('div');
-        cardBody.className = "card-body";
-        
-        const title = document.createElement('h2');
-        title.className = "card-title";
-        title.textContent = item.nama;
-        
-        const desc = document.createElement('p');
-        desc.className = "card-text";
-        desc.textContent = item.deskripsi;
-        
-        const price = document.createElement('p');
-        price.className = "card-price";
-        price.textContent = "Rp " + item.harga + " / jam";
-        
-        cardBody.appendChild(title);
-        cardBody.appendChild(desc);
-        cardBody.appendChild(price);
-        cardDiv.appendChild(img);
-        cardDiv.appendChild(cardBody);
-        cardLink.appendChild(cardDiv);
-        
-        katalogGrid.appendChild(cardLink);
+        const card = document.createElement('a');
+        card.href = "booking.html";
+        card.className = "card-link fade-in";
+        card.innerHTML = `
+          <div class="card">
+            <div class="card-img-wrapper"><img src="${item.gambar}" alt="${item.nama}" /></div>
+            <div class="card-body">
+              <h2 class="card-title">${item.nama}</h2>
+              <p class="card-text">${item.deskripsi}</p>
+              <p class="card-price"><i class="fas fa-tag"></i> Rp ${item.harga} / jam</p>
+            </div>
+            <div class="card-footer">
+              <span class="text-sm text-gray-400"><i class="fas fa-star text-yellow-400"></i> Baru</span>
+              <span class="book-btn">Booking</span>
+            </div>
+          </div>`;
+        grid.appendChild(card);
       });
+      // Fade in animation
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     });
   </script>
-  
-  <!-- Footer -->
-  <footer>
-    <div class="container-footer">
-      <p class="font-medium">Lokasi: Jl. Raya Futsal No.123</p>
-      <p class="font-medium">Telepon: +62 812 3456 7890</p>
-      <p class="font-medium">WhatsApp: +62 812 3456 7890</p>
-      <p class="font-medium">Instagram: @GawangIn</p>
-    </div>
-  </footer>
 </body>
 </html>
